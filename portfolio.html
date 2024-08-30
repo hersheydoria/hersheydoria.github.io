@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,5 +13,55 @@
     <title>My Personal Website</title>
     <link rel="icon" type="image/x-icon" href="web.png">
 </head>
-
+<body>
+        <h4>My Projects</h4>
+    <div class="portfolio">
+        <div class="wrapper">
+            <input type="radio" name="slide" id="one" checked>
+            <input type="radio" name="slide" id="two">
+            <input type="radio" name="slide" id="three">
+            <input type="radio" name="slide" id="four">
+            <input type="radio" name="slide" id="five">
+            <div class="img img-1">
+                <img src="dictionary1.png" alt="">
+            </div>
+            <div class="img img-2">
+                <img src="dictionary2.png" alt="">
+            </div>
+            <div class="img img-3">
+                <img src="dictionary3.png" alt="">
+            </div>
+            <div class="img img-4">
+                <img src="dictionary4.png" alt="">
+            </div>
+            <div class="img img-5">
+                <img src="dictionary5.png" alt="">
+            </div>
+            <div class="sliders">
+                <label for="one" class="one"></label>
+                <label for="two" class="two"></label>
+                <label for="three" class="three"></label>
+                <label for="four" class="four"></label>
+                <label for="five" class="five"></label>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="nav-content">
+            <div class="toggle-btn">
+                <i><img src="more.png" alt="More" style="width: 30px; height: 30px;"></i>
+            </div>
+            <span style="--i:1;">
+                <a href="index.html"><i class='bx bxs-home'></i></a>
+            </span>
+            <span style="--i:3;">
+                <a href="about.html"><i><img src="user.png" alt="User" style="width: 30px; height: 30px;"></i></a>
+            </span>
+            <span style="--i:5;">
+                <a href="portfolio.html"><i><img src="portfolio.png" alt="Portfolio" style="width: 24px; height: 24px;"></i></a>
+            </span>
+        </div>
+    </nav>
+    <script src="app.js"> </script>
+</body>
 </html>
