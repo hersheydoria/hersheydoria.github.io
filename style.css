@@ -127,22 +127,23 @@ body, html {
     }
 }
 
+/* Responsive adjustments for text-box on very small screens */
 @media (max-width: 480px) {
     .text-box {
-        bottom: 4%;
-        padding: 0 10px; /* Adjust padding for very small screens */
+        bottom: 2%; /* Move text higher to avoid cutting off */
+        padding: 0 10px;
     }
 
     .text-box p {
-        font-size: 6vw; /* Slightly larger on very small screens */
+        font-size: 5vw; /* Reduce font size slightly */
     }
 
     .text-box h1 {
-        font-size: 16vw; /* Slightly larger on very small screens */
+        font-size: 12vw; /* Reduce font size */
     }
 
     .text-box h3 {
-        font-size: 3vw; /* Slightly smaller on very small screens */
+        font-size: 2.5vw; /* Reduce font size */
     }
 }
 
