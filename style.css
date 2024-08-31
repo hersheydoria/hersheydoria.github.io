@@ -15,7 +15,6 @@ body {
     background-attachment: fixed;
     padding: 0 8%;
     position: relative;
-    overflow: hidden; /* Prevent scrolling */
 }
 
 body, html {
@@ -28,20 +27,11 @@ body, html {
 .text-box {
     color: #fff;
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
+    bottom: 8%;
     left: 0; /* Align to the left side of the screen */
     transform: translateX(0); /* Remove horizontal centering */
     text-align: left; /* Align text to the left */
     padding: 0 20px; /* Add padding to ensure text isn't touching the edge */
-}
-
-.text-box p,
-.text-box h1,
-.text-box h3 {
-    margin: 0;
 }
 
 /* Base styles for the hidden text */
@@ -137,23 +127,22 @@ body, html {
     }
 }
 
-/* Responsive adjustments for text-box on very small screens */
 @media (max-width: 480px) {
     .text-box {
-        bottom: 5%; /* Move text slightly up to avoid cutting off */
-        padding: 0 10px;
+        bottom: 4%;
+        padding: 0 10px; /* Adjust padding for very small screens */
     }
 
     .text-box p {
-        font-size: 4.5vw; /* Adjust font size */
+        font-size: 6vw; /* Slightly larger on very small screens */
     }
 
     .text-box h1 {
-        font-size: 12vw; /* Adjust font size */
+        font-size: 16vw; /* Slightly larger on very small screens */
     }
 
     .text-box h3 {
-        font-size: 2.5vw; /* Adjust font size */
+        font-size: 3vw; /* Slightly smaller on very small screens */
     }
 }
 
