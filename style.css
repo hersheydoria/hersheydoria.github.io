@@ -154,7 +154,7 @@ body, html {
     top: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(90deg, #6e9d92, #2d5d81); /* Darker mint green to dark blue gradient */
+    background: linear-gradient(90deg, #6e9d92, #2d5d81);
     transition: 1s;
 }
 
@@ -163,13 +163,13 @@ body, html {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px; /* Adjust size as needed */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    width: 200px;
     height: 200px;
     border-radius: 50%;
-    object-fit: cover; /* Ensures the image is centered within the circle */
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
 }
+
 
 .logo-header {
     position: fixed;
@@ -686,42 +686,45 @@ nav:hover .nav-content span {
     animation: fadeOut 0.5s ease-in-out;
 }
 
-/*project portfolio*/
+/* .portfolio { */
+/*     position: absolute; */
+/*     top: calc(10% + 100px); */
+/*     left: 50%; */
+/*     transform: translateX(-50%); */
+/*     width: 80vw; */
+/*     max-width: 900px; */
+/*     height: 60vh; */
+/*     background-color: rgba(0, 0, 0, 0.5); */
+/*     padding: 20px; */
+/*     border-radius: 7px; */
+/*     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); */
+/* } */
+
+/* Project Portfolio Heading */
 h4 {
     font-family: 'Poppins', cursive;
     font-size: 3.5rem;
     font-weight: 700;
-    color: #e0f7e9; /* Light mint green */
-    margin: 0; /* Remove default margin */
-    text-align: center; /* Center the text */
-    background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
+    color: #e0f7e9;
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(90deg, #a8e6cf, #74c0fc);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     -webkit-background-clip: text;
     color: transparent;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     padding-bottom: 20px;
-    line-height: 1.2; /* Adjust line height for better alignment */
+    line-height: 1.2;
 }
 
-.portfolio {
-    position: absolute; /* Position it absolutely to the container */
-    top: calc(10% + 100px); /* Adjust `100px` based on the height of `.wave` */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80vw; /* Adjust width to ensure a landscape form */
-    max-width: 900px; /* Adjust max-width to your preference */
-    height: 60vh; /* Adjust height to maintain landscape form */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark gray background */
-    padding: 20px;
-    border-radius: 7px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
-
+/* Wrapper */
 .wrapper {
     position: relative;
-    width: 700px; /* Adjust width as needed */
-    height: 400px; /* Adjust height as needed */
-    margin: 0 auto; /* Center the wrapper horizontally */
+    width: 90vw; /* Adjusted for better responsiveness */
+    max-width: 700px;
+    height: 50vh; /* Adjusted height for responsiveness */
+    max-height: 400px;
+    margin: 0 auto;
 }
 
 .wrapper .img {
@@ -735,42 +738,22 @@ h4 {
     width: 100%;
     object-fit: cover;
     clip-path: circle(0% at 0% 100%);
-    transition: all 0.7s;
+    transition: clip-path 0.7s ease; /* Adjusted transition for clip-path */
 }
 
-#one:checked ~ .img-1 img {
-    clip-path: circle(150% at 0% 100%);
-}
-
+/* Radio Buttons for Image Transitions */
+#one:checked ~ .img-1 img,
 #two:checked ~ .img-2 img,
-#two:checked ~ .img-2 img {
-    clip-path: circle(150% at 0% 100%);
-}
-
 #three:checked ~ .img-3 img,
-#three:checked ~ .img-3 img,
-#three:checked ~ .img-3 img {
-    clip-path: circle(150% at 0% 100%);
-}
-
 #four:checked ~ .img-4 img,
-#four:checked ~ .img-4 img,
-#four:checked ~ .img-4 img,
-#four:checked ~ .img-4 img {
-    clip-path: circle(150% at 0% 100%);
-}
-
-#five:checked ~ .img-5 img,
-#five:checked ~ .img-5 img,
-#five:checked ~ .img-5 img,
-#five:checked ~ .img-5 img,
 #five:checked ~ .img-5 img {
     clip-path: circle(150% at 0% 100%);
 }
 
+/* Sliders */
 .wrapper .sliders {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 99;
@@ -786,12 +769,13 @@ h4 {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 #one:checked ~ .sliders label.one,
 #two:checked ~ .sliders label.two,
 #three:checked ~ .sliders label.three,
 #four:checked ~ .sliders label.four,
 #five:checked ~ .sliders label.five {
-    width: 35px;
+    width: 25px; /* Reduced width for smaller screens */
     border-radius: 14px;
     background: rgb(142, 197, 252);
 }
@@ -800,6 +784,68 @@ h4 {
     background: rgb(142, 197, 252);
 }
 
+/* Hide radio buttons */
 input[type="radio"] {
     display: none;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    h4 {
+        font-size: 2.5rem; /* Adjust font size on smaller screens */
+    }
+    
+    .wrapper {
+        width: 90vw;
+        height: 40vh; /* Adjust height for smaller screens */
+    }
+
+    #one:checked ~ .img-1 img,
+    #two:checked ~ .img-2 img,
+    #three:checked ~ .img-3 img,
+    #four:checked ~ .img-4 img,
+    #five:checked ~ .img-5 img {
+        clip-path: circle(120% at 0% 100%); /* Adjust clip-path size for smaller screens */
+    }
+
+    .wrapper .sliders label {
+        width: 10px; /* Smaller slider dots */
+        height: 10px;
+    }
+
+    #one:checked ~ .sliders label.one,
+    #two:checked ~ .sliders label.two,
+    #three:checked ~ .sliders label.three,
+    #four:checked ~ .sliders label.four,
+    #five:checked ~ .sliders label.five {
+        width: 20px; /* Smaller width for active slider dots */
+    }
+}
+
+@media (max-width: 480px) {
+    h4 {
+        font-size: 2rem; /* Further adjust font size for very small screens */
+    }
+
+    .wrapper {
+        width: 100vw;
+        height: 35vh; /* Further reduce height for very small screens */
+    }
+
+    .wrapper .sliders {
+        bottom: 5px; /* Adjust position of slider controls */
+    }
+
+    .wrapper .sliders label {
+        width: 8px;
+        height: 8px;
+    }
+
+    #one:checked ~ .sliders label.one,
+    #two:checked ~ .sliders label.two,
+    #three:checked ~ .sliders label.three,
+    #four:checked ~ .sliders label.four,
+    #five:checked ~ .sliders label.five {
+        width: 15px; /* Smaller active slider dots */
+    }
 }
