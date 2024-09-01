@@ -31,37 +31,73 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2300);
     }, 100); // Add a slight delay before starting the animation
 });
+/*nav dragging*/
+const nav = document.querySelector('nav'); 
 
-const nav = document.querySelector("nav");
-const toggleBtn = nav.querySelector(".toggle-btn");
+let startY = 0;
+let initialTop = 0;
 
-// JS code to make draggable nav
 function onDrag(event) {
     const navStyle = window.getComputedStyle(nav);
-    const navTop = parseInt(navStyle.top);
-    const navHeight = parseInt(navStyle.height);
-    const windHeight = window.innerHeight;
+    const navTop = parseInt(navStyle.top) || 0;
 
-    nav.style.top = navTop > 0 ? `${navTop + event.movementY}px` : "1px";
-
-    // Prevent default behavior
-    event.preventDefault();
+    nav.style.top = Math.max(0, navTop + event.movementY) + "px";
+    event.preventDefault(); // Prevent default behavior
 }
 
-// Start dragging
-nav.addEventListener("mousedown", () => {
-    document.addEventListener("mousemove", onDrag);
-});
+function onMouseDown(event) {
+    startY = event.clientY;
+    const navStyle = window.getComputedStyle(nav);
+    initialTop = parseInt(navStyle.top) || 0;
 
-// Stop dragging when the mouse is released
-document.addEventListener("mouseup", () => {
-    document.removeEventListener("mousemove", onDrag);
-});
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener("mouseleave", onMouseLeave);
+}
 
-// Stop dragging when the mouse leaves the window
-document.addEventListener("mouseleave", () => {
-    document.removeEventListener("mousemove", onDrag);
-});
+function onMouseMove(event) {
+    const deltaY = event.clientY - startY;
+    nav.style.top = Math.max(0, initialTop + deltaY) + "px";
+    event.preventDefault(); // Prevent default behavior
+}
+
+function onMouseUp(event) {
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+    document.removeEventListener("mouseleave", onMouseLeave);
+}
+
+function onMouseLeave(event) {
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+    document.removeEventListener("mouseleave", onMouseLeave);
+}
+
+function onTouchStart(event) {
+    const touch = event.touches[0];
+    startY = touch.clientY;
+    const navStyle = window.getComputedStyle(nav);
+    initialTop = parseInt(navStyle.top) || 0;
+
+    document.addEventListener("touchmove", onTouchMove);
+    document.addEventListener("touchend", onTouchEnd);
+}
+
+function onTouchMove(event) {
+    const touch = event.touches[0];
+    const deltaY = touch.clientY - startY;
+    nav.style.top = Math.max(0, initialTop + deltaY) + "px";
+    event.preventDefault(); // Prevent default behavior
+}
+
+function onTouchEnd(event) {
+    document.removeEventListener("touchmove", onTouchMove);
+    document.removeEventListener("touchend", onTouchEnd);
+}
+
+// Add event listeners for mouse and touch events
+nav.addEventListener("mousedown", onMouseDown);
+nav.addEventListener("touchstart", onTouchStart);
 
 document.addEventListener("DOMContentLoaded", function () {
     // Create an intersection observer
