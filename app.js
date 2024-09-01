@@ -125,20 +125,30 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.skill-box').forEach(box => observer.observe(box));
 });
 
-/*pages animation*/
+/*page animation*/
 document.addEventListener('DOMContentLoaded', function () {
-    document.body.classList.add('fade-in');
+    // Check if the current page is not the index page
+    if (window.location.pathname !== '/index.html') {
+        document.body.classList.add('fade-in');
+    }
 });
 
 window.addEventListener('beforeunload', function () {
-    document.body.classList.add('fade-out');
+    // Check if the current page is not the index page
+    if (window.location.pathname !== '/index.html') {
+        document.body.classList.add('fade-out');
+    }
 });
 
 document.addEventListener('animationend', function (event) {
     if (event.animationName === 'fadeOut') {
-        window.location.href = event.target.getAttribute('data-href');
+        // Only navigate if the current page is not the index page
+        if (window.location.pathname !== '/index.html') {
+            window.location.href = event.target.getAttribute('data-href');
+        }
     }
 });
+
 /*box animation*/
 document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver((entries) => {
