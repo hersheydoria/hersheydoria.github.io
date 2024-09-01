@@ -159,3 +159,42 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 });
+
+// Add this script to your HTML file
+document.addEventListener("DOMContentLoaded", function() {
+    const wrapper = document.querySelector('.wrapper');
+    let touchstartX = 0;
+    let touchendX = 0;
+    
+    wrapper.addEventListener('touchstart', function(event) {
+        touchstartX = event.changedTouches[0].screenX;
+    }, false);
+    
+    wrapper.addEventListener('touchend', function(event) {
+        touchendX = event.changedTouches[0].screenX;
+        handleSwipe();
+    }, false); 
+    
+    function handleSwipe() {
+        const current = document.querySelector('.project1 input[type="radio"]:checked') || 
+                        document.querySelector('.project2 input[type="radio"]:checked') ||
+                        document.querySelector('.project3 input[type="radio"]:checked') || 
+                        document.querySelector('.project4 input[type="radio"]:checked');
+        
+        if (touchendX < touchstartX) {
+            // Swipe left
+            const next = current.nextElementSibling;
+            if (next && next.type === "radio") {
+                next.checked = true;
+            }
+        }
+        
+        if (touchendX > touchstartX) {
+            // Swipe right
+            const prev = current.previousElementSibling;
+            if (prev && prev.type === "radio") {
+                prev.checked = true;
+            }
+        }
+    }
+});
