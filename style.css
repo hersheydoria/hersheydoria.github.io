@@ -734,28 +734,40 @@ nav:hover .nav-content span {
 /* General Project Styling */
 h4 {
     font-family: 'Poppins', cursive;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #e0f7e9;
-    margin: 0;
-    text-align: center;
-    background: linear-gradient(90deg, #a8e6cf, #74c0fc);
+    color: #e0f7e9; /* Light mint green */
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center the text */
+    background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     -webkit-background-clip: text;
     color: transparent;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     padding-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.2; /* Adjust line height for better alignment */
 }
 
-/* Ensure the .project container allows enough space */
+h4::after {
+    content: '';
+    display: block;
+    width: 17%; 
+    height: 4px;
+    background: white; 
+    margin: 10px auto 0 auto; /* Center the line and add margin */
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
 .project {
     position: relative;
-    margin-bottom: 60px; /* Increased margin to ensure the reflection shows fully */
+    margin-bottom: 60px; 
     text-align: center;
     border-radius: 10px;
-    overflow: visible; /* Make sure the reflection isn't cut off */
+    overflow: visible; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 80%;
+    left: 10%;
 }
 
 .project:hover {
@@ -763,27 +775,31 @@ h4 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.project h5, .project p {
+.project p {
     font-family: 'Poppins', sans-serif;
     color: #e0f7e9; /* Light mint green */
     background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     -webkit-background-clip: text;
     color: transparent;
-    text-align: center;
+    text-align: justify;
     margin: 20px 0;
     opacity: 0; /* Initial state */
     transform: translateY(20px); /* Initial state */
     transition: opacity 1s ease-out, transform 1s ease-out, color 0.3s ease; /* Smooth transition */
+    font-size: 1.6rem; /* Slightly larger size */
+    font-weight: 500; /* Medium weight */
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out forwards; /* Apply animation and ensure it remains in final state */
+    animation-delay: 0.7s;
 }
 
 .project a {
-    font-family: 'Poppins', sans-serif; /* Ensuring the font is consistent */
     font-size: 2rem; /* Larger size for the link text */
     font-weight: 700; /* Bold weight for emphasis */
     letter-spacing: 1px; /* Adds spacing between letters */
     line-height: 1.3; /* Controls the space between lines of text */
-    color: #e0f7e9; /* Initial color of the link text */
+    color: #bce3cb; /* Initial color of the link text */
     text-decoration: none; /* Removes the default underline of the link */
     background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
     -webkit-background-clip: text;
@@ -799,21 +815,17 @@ h4 {
     color: #6e9d92; /* Changes the text color on hover */
 }
 
-/* Enhanced styles for p */
-.project p {
-    font-size: 1.6rem; /* Slightly larger size */
-    font-weight: 500; /* Medium weight */
-    line-height: 1.6;
-    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
-    animation: fadeInUp 1s ease-out forwards; /* Apply animation and ensure it remains in final state */
-    animation-delay: 0.7s;
-}
-
-.project p:hover {
-    transform: translateY(-3px); /* Slightly raise description on hover */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
-    color: #a8e6cf; /* Light mint green on hover */
-    animation: glow 1s ease-in-out infinite; /* Glow effect */
+@media (max-width: 768px) {
+    h4, .project a, .project p {
+        font-size: 1.5rem;
+    }
+    h4::after {
+        width: 25%;
+    }
+    .project {
+        width: 100%;
+        left: 0;
+    }
 }
 
 /* Animation for Project Elements */
@@ -825,19 +837,6 @@ h4 {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Glow Animation */
-@keyframes glow {
-    0% {
-        text-shadow: 0 0 5px #a8e6cf, 0 0 10px #a8e6cf, 0 0 15px #a8e6cf, 0 0 20px #74c0fc, 0 0 25px #74c0fc, 0 0 30px #74c0fc, 0 0 35px #74c0fc;
-    }
-    50% {
-        text-shadow: 0 0 10px #a8e6cf, 0 0 20px #a8e6cf, 0 0 30px #a8e6cf, 0 0 40px #74c0fc, 0 0 50px #74c0fc, 0 0 60px #74c0fc, 0 0 70px #74c0fc;
-    }
-    100% {
-        text-shadow: 0 0 5px #a8e6cf, 0 0 10px #a8e6cf, 0 0 15px #a8e6cf, 0 0 20px #74c0fc, 0 0 25px #74c0fc, 0 0 30px #74c0fc, 0 0 35px #74c0fc;
     }
 }
 
