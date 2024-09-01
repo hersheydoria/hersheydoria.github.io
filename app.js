@@ -142,45 +142,28 @@ document.querySelector('.share-btn').addEventListener('click', () => {
         alert('Your browser does not support the Web Share API. Please share this link manually.');
     }
 });
-
-// app.js
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.project h5, .project p');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    elements.forEach(el => {
-        observer.observe(el);
-    });
-});
-
-// Add this script to your HTML file
+/*image swiping*/
 document.addEventListener("DOMContentLoaded", function() {
-    const wrapper = document.querySelector('.wrapper');
-    let touchstartX = 0;
-    let touchendX = 0;
+    const wrappers = document.querySelectorAll('.wrapper');
     
-    wrapper.addEventListener('touchstart', function(event) {
-        touchstartX = event.changedTouches[0].screenX;
-    }, false);
-    
-    wrapper.addEventListener('touchend', function(event) {
-        touchendX = event.changedTouches[0].screenX;
-        handleSwipe();
-    }, false); 
-    
-    function handleSwipe() {
-        const current = document.querySelector('.project1 input[type="radio"]:checked') || 
-                        document.querySelector('.project2 input[type="radio"]:checked') ||
-                        document.querySelector('.project3 input[type="radio"]:checked') || 
-                        document.querySelector('.project4 input[type="radio"]:checked');
+    wrappers.forEach(wrapper => {
+        let touchstartX = 0;
+        let touchendX = 0;
         
+        wrapper.addEventListener('touchstart', function(event) {
+            touchstartX = event.changedTouches[0].screenX;
+        }, false);
+        
+        wrapper.addEventListener('touchend', function(event) {
+            touchendX = event.changedTouches[0].screenX;
+            handleSwipe(wrapper, touchstartX, touchendX);
+        }, false); 
+    });
+
+    function handleSwipe(wrapper, touchstartX, touchendX) {
+        const currentProject = wrapper.closest('.project1, .project2, .project3, .project4');
+        const current = currentProject.querySelector('input[type="radio"]:checked');
+
         if (touchendX < touchstartX) {
             // Swipe left
             const next = current.nextElementSibling;
