@@ -283,6 +283,20 @@ nav:hover .nav-content span {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin: 0 auto; /* Center the box horizontally */
+    opacity: 0; /* Start hidden */
+    transform: translateX(100%); /* Start off-screen */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;    animation: slideInRight 0.7s ease forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* Box hover effect */
@@ -509,6 +523,10 @@ nav:hover .nav-content span {
     border-radius: 7px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     margin: 50px auto;
+    opacity: 0; /* Start hidden */
+    transform: translateX(100%); /* Start off-screen */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    animation: slideInLeft 0.7s ease forwards;
 }
 
 /* Skill box styles */
@@ -608,6 +626,32 @@ nav:hover .nav-content span {
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     margin-top: 50px;
+    opacity: 0; /* Start hidden */
+    transform: translateX(100%); /* Start off-screen */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    animation: slideInUp 0.7s ease forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .footer-header {
@@ -637,7 +681,7 @@ nav:hover .nav-content span {
 }
 
 .footer-link:hover {
-    color: #6e9d92; /* Blue color on hover */
+    color: #6e9d92;
 }
 
 .footer-box i {
@@ -687,21 +731,7 @@ nav:hover .nav-content span {
     animation: fadeOut 0.5s ease-in-out;
 }
 
-/* .portfolio { */
-/*     position: absolute; */
-/*     top: calc(10% + 100px); */
-/*     left: 50%; */
-/*     transform: translateX(-50%); */
-/*     width: 80vw; */
-/*     max-width: 900px; */
-/*     height: 60vh; */
-/*     background-color: rgba(0, 0, 0, 0.5); */
-/*     padding: 20px; */
-/*     border-radius: 7px; */
-/*     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); */
-/* } */
-
-/* Project Portfolio Heading */
+/* General Project Styling */
 h4 {
     font-family: 'Poppins', cursive;
     font-size: 3.5rem;
@@ -718,37 +748,170 @@ h4 {
     line-height: 1.2;
 }
 
+/* Ensure the .project container allows enough space */
+.project {
+    position: relative;
+    margin-bottom: 60px; /* Increased margin to ensure the reflection shows fully */
+    text-align: center;
+    border-radius: 10px;
+    overflow: visible; /* Make sure the reflection isn't cut off */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project h5, .project p {
+    font-family: 'Poppins', sans-serif;
+    color: #e0f7e9; /* Light mint green */
+    background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 20px 0;
+    opacity: 0; /* Initial state */
+    transform: translateY(20px); /* Initial state */
+    transition: opacity 1s ease-out, transform 1s ease-out, color 0.3s ease; /* Smooth transition */
+}
+
+.project a {
+    font-family: 'Poppins', sans-serif; /* Ensuring the font is consistent */
+    font-size: 2rem; /* Larger size for the link text */
+    font-weight: 700; /* Bold weight for emphasis */
+    letter-spacing: 1px; /* Adds spacing between letters */
+    line-height: 1.3; /* Controls the space between lines of text */
+    color: #e0f7e9; /* Initial color of the link text */
+    text-decoration: none; /* Removes the default underline of the link */
+    background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
+    -webkit-background-clip: text;
+    color: transparent; /* Makes the text color transparent to show the gradient */
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease; /* Smooth transitions for hover effects */
+    text-align: center; /* Centers the text */
+    display: inline-block; /* Allows padding and hover effects to apply correctly */
+}
+
+.project a:hover {
+    transform: translateY(-5px); /* Slightly raises the link text on hover */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Adds a shadow effect on hover */
+    color: #6e9d92; /* Changes the text color on hover */
+}
+
+/* Enhanced styles for p */
+.project p {
+    font-size: 1.6rem; /* Slightly larger size */
+    font-weight: 500; /* Medium weight */
+    line-height: 1.6;
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    animation: fadeInUp 1s ease-out forwards; /* Apply animation and ensure it remains in final state */
+    animation-delay: 0.7s;
+}
+
+.project p:hover {
+    transform: translateY(-3px); /* Slightly raise description on hover */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    color: #a8e6cf; /* Light mint green on hover */
+    animation: glow 1s ease-in-out infinite; /* Glow effect */
+}
+
+/* Animation for Project Elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #a8e6cf, 0 0 10px #a8e6cf, 0 0 15px #a8e6cf, 0 0 20px #74c0fc, 0 0 25px #74c0fc, 0 0 30px #74c0fc, 0 0 35px #74c0fc;
+    }
+    50% {
+        text-shadow: 0 0 10px #a8e6cf, 0 0 20px #a8e6cf, 0 0 30px #a8e6cf, 0 0 40px #74c0fc, 0 0 50px #74c0fc, 0 0 60px #74c0fc, 0 0 70px #74c0fc;
+    }
+    100% {
+        text-shadow: 0 0 5px #a8e6cf, 0 0 10px #a8e6cf, 0 0 15px #a8e6cf, 0 0 20px #74c0fc, 0 0 25px #74c0fc, 0 0 30px #74c0fc, 0 0 35px #74c0fc;
+    }
+}
+
+.project h5,
+.project p {
+    animation: fadeInUp 1s ease-out forwards; /* Apply animation and ensure it remains in final state */
+}
+
+/* Optional: Define delays for text */
+.project h5 {
+    animation-delay: 0.5s;
+}
+
+.project p {
+    animation-delay: 0.7s;
+}
+
 /* Wrapper */
 .wrapper {
     position: relative;
-    width: 90vw; /* Adjusted for better responsiveness */
+    width: 90vw;
     max-width: 700px;
-    height: 50vh; /* Adjusted height for responsiveness */
+    height: 50vh;
     max-height: 400px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
+/* Image Container */
 .wrapper .img {
     position: absolute;
     width: 100%;
     height: 100%;
+    transition: opacity 0.7s ease, transform 0.5s ease;
+    opacity: 0; /* Hide all images initially */
+    transform: scale(1.05); /* Slightly zoom in */
+    border: 15px solid rgba(255, 255, 255, 0.2); /* Semi-transparent dark gray background */    ; /* Add a border to the image container */
+    border-radius: 15px; /* Optional: Add rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for a 3D effect */
+    overflow: hidden; /* Ensure the image fits within the border box */
 }
 
+/* Image Styling */
 .wrapper .img img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    clip-path: circle(0% at 0% 100%);
-    transition: clip-path 0.7s ease; /* Adjusted transition for clip-path */
+    transition: transform 0.5s ease;
+    border-radius: 10px; /* Optional: Add rounded corners to the image itself */
 }
 
-/* Radio Buttons for Image Transitions */
-#one:checked ~ .img-1 img,
-#two:checked ~ .img-2 img,
-#three:checked ~ .img-3 img,
-#four:checked ~ .img-4 img,
-#five:checked ~ .img-5 img {
-    clip-path: circle(150% at 0% 100%);
+/* Image Hover Effect */
+.wrapper .img:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+    border: 2px solid #74c0fc; /* Optional: Change border color on hover */
+}
+
+/* Show the selected image */
+.project1 input[type="radio"]#one1:checked ~ .img.img-1,
+.project1 input[type="radio"]#two1:checked ~ .img.img-2,
+.project1 input[type="radio"]#three1:checked ~ .img.img-3,
+.project1 input[type="radio"]#four1:checked ~ .img.img-4,
+.project1 input[type="radio"]#five1:checked ~ .img.img-5,
+.project1 input[type="radio"]#six1:checked ~ .img.img-6,
+.project2 input[type="radio"]#one2:checked ~ .img.img-1,
+.project2 input[type="radio"]#two2:checked ~ .img.img-2,
+.project3 input[type="radio"]#one3:checked ~ .img.img-1,
+.project3 input[type="radio"]#two3:checked ~ .img.img-2,
+.project3 input[type="radio"]#three3:checked ~ .img.img-3,
+.project4 input[type="radio"]#one4:checked ~ .img.img-1,
+.project4 input[type="radio"]#two4:checked ~ .img.img-2,
+.project4 input[type="radio"]#three4:checked ~ .img.img-3 {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Sliders */
@@ -768,15 +931,29 @@ h4 {
     margin: 0 3px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.3s ease;
 }
 
-#one:checked ~ .sliders label.one,
-#two:checked ~ .sliders label.two,
-#three:checked ~ .sliders label.three,
-#four:checked ~ .sliders label.four,
-#five:checked ~ .sliders label.five {
-    width: 25px; /* Reduced width for smaller screens */
+.wrapper .sliders label:hover {
+    background: rgb(142, 197, 252);
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+.project1 input[type="radio"]#one1:checked ~ .sliders label[for="one1"],
+.project1 input[type="radio"]#two1:checked ~ .sliders label[for="two1"],
+.project1 input[type="radio"]#three1:checked ~ .sliders label[for="three1"],
+.project1 input[type="radio"]#four1:checked ~ .sliders label[for="four1"],
+.project1 input[type="radio"]#five1:checked ~ .sliders label[for="five1"],
+.project1 input[type="radio"]#six1:checked ~ .sliders label[for="six1"],
+.project2 input[type="radio"]#one2:checked ~ .sliders label[for="one2"],
+.project2 input[type="radio"]#two2:checked ~ .sliders label[for="two2"],
+.project3 input[type="radio"]#one3:checked ~ .sliders label[for="one3"],
+.project3 input[type="radio"]#two3:checked ~ .sliders label[for="two3"],
+.project3 input[type="radio"]#three3:checked ~ .sliders label[for="three3"],
+.project4 input[type="radio"]#one4:checked ~ .sliders label[for="one4"],
+.project4 input[type="radio"]#two4:checked ~ .sliders label[for="two4"],
+.project4 input[type="radio"]#three4:checked ~ .sliders label[for="three4"] {
+    width: 25px;
     border-radius: 14px;
     background: rgb(142, 197, 252);
 }
@@ -790,63 +967,3 @@ input[type="radio"] {
     display: none;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    h4 {
-        font-size: 2.5rem; /* Adjust font size on smaller screens */
-    }
-    
-    .wrapper {
-        width: 90vw;
-        height: 40vh; /* Adjust height for smaller screens */
-    }
-
-    #one:checked ~ .img-1 img,
-    #two:checked ~ .img-2 img,
-    #three:checked ~ .img-3 img,
-    #four:checked ~ .img-4 img,
-    #five:checked ~ .img-5 img {
-        clip-path: circle(120% at 0% 100%); /* Adjust clip-path size for smaller screens */
-    }
-
-    .wrapper .sliders label {
-        width: 10px; /* Smaller slider dots */
-        height: 10px;
-    }
-
-    #one:checked ~ .sliders label.one,
-    #two:checked ~ .sliders label.two,
-    #three:checked ~ .sliders label.three,
-    #four:checked ~ .sliders label.four,
-    #five:checked ~ .sliders label.five {
-        width: 20px; /* Smaller width for active slider dots */
-    }
-}
-
-@media (max-width: 480px) {
-    h4 {
-        font-size: 2rem; /* Further adjust font size for very small screens */
-    }
-
-    .wrapper {
-        width: 100vw;
-        height: 35vh; /* Further reduce height for very small screens */
-    }
-
-    .wrapper .sliders {
-        bottom: 5px; /* Adjust position of slider controls */
-    }
-
-    .wrapper .sliders label {
-        width: 8px;
-        height: 8px;
-    }
-
-    #one:checked ~ .sliders label.one,
-    #two:checked ~ .sliders label.two,
-    #three:checked ~ .sliders label.three,
-    #four:checked ~ .sliders label.four,
-    #five:checked ~ .sliders label.five {
-        width: 15px; /* Smaller active slider dots */
-    }
-}

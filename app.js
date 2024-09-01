@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Observe each .skill-box
     document.querySelectorAll('.skill-box').forEach(box => observer.observe(box));
 });
+
 /*pages animation*/
 document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.add('fade-in');
@@ -102,6 +103,30 @@ document.addEventListener('animationend', function (event) {
         window.location.href = event.target.getAttribute('data-href');
     }
 });
+/*box animation*/
+document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const targetElement = entry.target;
+                const boxes = targetElement.querySelectorAll('.box, .container-box, .footer-box');
+                
+                boxes.forEach((box, index) => {
+                    setTimeout(() => {
+                        box.classList.add('animate');
+                    }, index * 300); // Staggered animation delay
+                });
+            } else {
+                const boxes = entry.target.querySelectorAll('.box, .container-box, .footer-box');
+                boxes.forEach(box => box.classList.remove('animate'));
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when at least 50% of the element is in view
+
+    document.querySelectorAll('.box, .container-box, .footer-box').forEach(el => observer.observe(el));
+});
+
+
 /*share button*/
 document.querySelector('.share-btn').addEventListener('click', () => {
     if (navigator.share) {
@@ -118,10 +143,19 @@ document.querySelector('.share-btn').addEventListener('click', () => {
     }
 });
 
-/*project portfolio*/
-const text = document.querySelectorAll('h4');
-text.forEach(h4 => {
-    h4.innerHTML = h4.textContent.split('').map((text, wave) => 
-        `<span style="transition-delay: ${wave * 25}ms">${text}</span>`
-    ).join('');
+// app.js
+document.addEventListener('DOMContentLoaded', function () {
+    const elements = document.querySelectorAll('.project h5, .project p');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => {
+        observer.observe(el);
+    });
 });
