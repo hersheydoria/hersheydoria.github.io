@@ -38,31 +38,14 @@ body, html {
     z-index: 9999;
 }
 
-.spinner-container {
+.spinner {
     position: relative;
     width: 100px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.spinner {
-    width: 80px;
-    height: 80px;
-    border: 8px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    border-top: 8px solid #fff;
-    animation: spin 1s linear infinite;
-}
-
-.circle {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border: 4px dashed rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
+    animation: rotate 2s linear infinite;
 }
 
 .dot {
@@ -74,20 +57,34 @@ body, html {
     animation: bounce 1s infinite;
 }
 
-@keyframes spin {
+.dot1 {
+    animation-delay: 0s;
+    background-color: #ff6347;
+}
+
+.dot2 {
+    animation-delay: 0.25s;
+    background-color: #ffa07a;
+}
+
+.dot3 {
+    animation-delay: 0.5s;
+    background-color: #ff4500;
+}
+
+.dot4 {
+    animation-delay: 0.75s;
+    background-color: #ff8c00;
+}
+
+@keyframes rotate {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.5; }
-}
-
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.5); }
 }
 
 /* Hide preloader when content is loaded */
