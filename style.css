@@ -6,21 +6,60 @@
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('char9.jpg');
-    background-size: cover;
+    width: 100%; /* Ensure full width */
+    height: 100vh; /* Adjust to viewport height */
+    background-color: #006a6a; /* Solid color close to darker mint green */
+    color: #ffffff; /* White text color for contrast */
+    background-image: url('bg.png');
+    background-size: contain; /* Ensure the entire image fits within the viewport */
+    background-position: right center; /* Move the image to the right */
     background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    padding: 0 8%;
-    position: relative;
+    padding: 0;
+    margin: 0; /* Ensure no extra space is causing scrolling */
 }
+
 
 body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top: 8px solid #fff;
+    animation: spin 1.5s linear infinite, scale 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Hide preloader when content is loaded */
+body.loaded .preloader {
+    display: none;
 }
 
 /* Base styles for text-box */
@@ -636,20 +675,23 @@ nav:hover .nav-content span {
 
 .footer-header-wrapper {
     display: flex;
-    justify-content: space-between; /* Space between headers */
+    justify-content: space-between; /* Space between columns */
     align-items: flex-start; /* Align at the top */
     width: 100%;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
+/* Adjust margins for larger screens */
 .col-md-4:first-child {
     margin-right: auto; /* Pushes the first column to the left */
-    margin-left: 250px; /* Adjust this value to increase left margin */
 }
 
 .col-md-4:last-child {
-    margin-left: auto; /* Ensures the second column is pushed to the right */
+    margin-left: auto; /* Center the second column initially */
+    margin-left: 50px; /* Adjust this value as needed */
 }
 
+/* Title styles */
 .footer-header {
     font-family: 'Poppins', cursive;
     font-size: 1.5rem;
@@ -724,11 +766,46 @@ nav:hover .nav-content span {
     }
 }
 
-@media (max-width: 768px) {
+/* Adjust for iPad Mini and similar devices */
+@media (max-width: 1024px) and (min-width: 768px) {
     .col-md-4:first-child {
+        margin-right: 0; /* Remove margin-right for tablets */
+        margin-left: 0; /* Remove margin-left for tablets */
+    }
+
+    .col-md-4:last-child {
+        margin-left: 20px; /* Adjust right margin for tablets */
+    }
+}
+
+/* Adjust margin and layout for smaller screens */
+@media (max-width: 768px) {
+    .footer-header-wrapper {
+        flex-direction: column; /* Stack columns on smaller screens */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .col-md-4 {
+        margin: 10px 0; /* Add margin between stacked columns */
+        flex: 1 1 100%; /* Ensure columns take full width */
+    }
+
+    .col-md-4:last-child {
         margin-left: 0; /* Remove left margin on smaller screens */
     }
 }
+
+/* Optional: Adjust padding for very small screens */
+@media (max-width: 576px) {
+    .footer-box {
+        padding: 20px 10px;
+    }
+
+    .col-md-4 {
+        flex: 1 1 100%; /* Columns stack on top of each other */
+    }
+}
+
 
 /*page transition*/
 @keyframes fadeIn {
