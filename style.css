@@ -517,7 +517,7 @@ nav:hover .nav-content span {
 .container-box {
     position: relative;
     max-width: 500px;
-    width: 100%;
+    width: 95%;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark gray background */
     padding: 10px 20px;
     border-radius: 7px;
@@ -529,18 +529,7 @@ nav:hover .nav-content span {
     animation: slideInLeft 0.7s ease forwards;
 }
 
-/* Media queries for smaller screens */
-@media (max-width: 768px) {
-    .container-box {
-        padding: 70px; /* Add padding for smaller screens */
-    }
-}
 
-@media (max-width: 480px) {
-    .container-box {
-        padding: 50px; /* Adjust padding for very small screens */
-    }
-}
 
 /* Skill box styles */
 .skill-box {
