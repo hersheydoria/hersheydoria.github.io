@@ -18,11 +18,28 @@ body {
     margin: 0; /* Ensure no extra space is causing scrolling */
 }
 
-
 body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+
+.github-icon {
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    z-index: 1000;
+    padding: 0 5px;
+}
+
+.github-icon a {
+    color: #ffffff; /* White icon */
+    font-size: 32px; /* Icon size */
+    text-decoration: none;
+}
+
+.github-icon a:hover {
+    color: #f5f5f5; /* Hover effect */
 }
 
 .preloader {
@@ -74,6 +91,49 @@ body, html {
 /* Hide preloader when content is loaded */
 body.loaded .preloader {
     display: none;
+}
+
+/* Styles for the smaller HD text */
+.hd-text {
+    position: absolute;
+    top: 10px; /* Position it near the top */
+    right: 10px; /* Position it near the right side */
+    text-align: right; /* Right-align the text */
+    padding: 0 10px; /* Add padding to ensure text isn't touching the edge */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+/* Style for the h1 element inside the hd-text */
+.hd-text h1 {
+    font-size: 27px; /* Smaller font size similar to GitHub icon */
+    line-height: 1.1;
+    margin: 0;
+    color: transparent; /* Transparent text */
+    -webkit-text-stroke: 1px #fff; /* White stroke for visible text outline */
+    background: url('back.png'); /* Background image to fill the text */
+    -webkit-background-clip: text; /* Clip the background to text */
+    background-position: 0 0;
+    animation: back 20s linear infinite; /* Animate background image */
+}
+
+/* Keyframes for the background animation */
+@keyframes back {
+    100% {
+        background-position: 2000px 0; /* Animate the background */
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .hd-text h1 {
+        font-size: 18px; /* Smaller font size for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hd-text h1 {
+        font-size: 16px; /* Adjust font size for very small screens */
+    }
 }
 
 /* Base styles for text-box */
