@@ -38,53 +38,37 @@ body, html {
     z-index: 9999;
 }
 
-.spinner {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotate 2s linear infinite;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3, 50px);
+    gap: 10px;
 }
 
-.dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 50%;
-    animation: bounce 1s infinite;
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    animation: pulse 1.5s infinite ease-in-out, colorChange 3s infinite ease-in-out;
 }
 
-.dot1 {
-    animation-delay: 0s;
-    background-color: #ff6347;
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
 }
 
-.dot2 {
-    animation-delay: 0.25s;
-    background-color: #ffa07a;
-}
-
-.dot3 {
-    animation-delay: 0.5s;
-    background-color: #ff4500;
-}
-
-.dot4 {
-    animation-delay: 0.75s;
-    background-color: #ff8c00;
-}
-
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.5); }
+@keyframes colorChange {
+    0% { background-color: #ff6347; }
+    25% { background-color: #ffa07a; }
+    50% { background-color: #ff4500; }
+    75% { background-color: #ff8c00; }
+    100% { background-color: #ff6347; }
 }
 
 /* Hide preloader when content is loaded */
