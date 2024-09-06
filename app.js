@@ -31,6 +31,11 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2300);
     }, 100); // Add a slight delay before starting the animation
 });
+/*preloader*/
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+});
+
 /*nav dragging*/
 const nav = document.querySelector('nav'); 
 
