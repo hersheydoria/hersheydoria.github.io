@@ -529,6 +529,19 @@ nav:hover .nav-content span {
     animation: slideInLeft 0.7s ease forwards;
 }
 
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .container-box {
+        padding: 20px; /* Add padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container-box {
+        padding: 15px; /* Adjust padding for very small screens */
+    }
+}
+
 /* Skill box styles */
 .skill-box {
     width: 100%;
@@ -626,32 +639,26 @@ nav:hover .nav-content span {
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     margin-top: 50px;
-    opacity: 0; /* Start hidden */
-    transform: translateX(100%); /* Start off-screen */
+    opacity: 0;
+    transform: translateX(100%);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     animation: slideInUp 0.7s ease forwards;
 }
 
-@keyframes slideInLeft {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.footer-header-wrapper {
+    display: flex;
+    justify-content: space-between; /* Space between headers */
+    align-items: flex-start; /* Align at the top */
+    width: 100%;
 }
 
-@keyframes slideInUp {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.col-md-4:first-child {
+    margin-right: auto; /* Pushes the first column to the left */
+    margin-left: 250px; /* Adjust this value to increase left margin */
+}
+
+.col-md-4:last-child {
+    margin-left: auto; /* Ensures the second column is pushed to the right */
 }
 
 .footer-header {
@@ -684,14 +691,8 @@ nav:hover .nav-content span {
     color: #6e9d92;
 }
 
-.footer-box i {
-    font-size: 1.2rem;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
 .share-btn {
-    background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
+    background: linear-gradient(90deg, #a8e6cf, #74c0fc);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -705,11 +706,39 @@ nav:hover .nav-content span {
 }
 
 .share-btn:hover {
-    background: linear-gradient(90deg, #6e9d92, #2d5d81); /* Darker mint green to dark blue gradient */
+    background: linear-gradient(90deg, #6e9d92, #2d5d81);
 }
 
 .share-btn i {
     margin-right: 5px;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-4:first-child {
+        margin-left: 0; /* Remove left margin on smaller screens */
+    }
 }
 
 /*page transition*/
