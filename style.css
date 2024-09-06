@@ -532,13 +532,13 @@ nav:hover .nav-content span {
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
     .container-box {
-        padding: 20px; /* Add padding for smaller screens */
+        padding: 70px; /* Add padding for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .container-box {
-        padding: 15px; /* Adjust padding for very small screens */
+        padding: 50px; /* Adjust padding for very small screens */
     }
 }
 
