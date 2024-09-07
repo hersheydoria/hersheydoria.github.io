@@ -10,7 +10,7 @@ body {
     height: 100vh; /* Adjust to viewport height */
     background-color: #006a6a; /* Solid color close to darker mint green */
     color: #ffffff; /* White text color for contrast */
-    background-image: url('bg.png');
+    background-image: url('bg1.png');
     background-size: contain; /* Ensure the entire image fits within the viewport */
     background-position: right center; /* Move the image to the right */
     background-repeat: no-repeat;
@@ -22,24 +22,6 @@ body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-}
-
-.github-icon {
-    position: fixed;
-    top: 5px;
-    left: 10px;
-    z-index: 1000;
-    padding: 0 5px;
-}
-
-.github-icon a {
-    color: #ffffff; /* White icon */
-    font-size: 32px; /* Icon size */
-    text-decoration: none;
-}
-
-.github-icon a:hover {
-    color: #f5f5f5; /* Hover effect */
 }
 
 /* Preloader container */
@@ -103,27 +85,29 @@ body, html {
     }
 }
 
-/* Styles for the smaller HD text */
+/* Styles for the HD text */
 .hd-text {
-    position: absolute;
-    top: 10px; /* Position it near the top */
-    right: 10px; /* Position it near the right side */
-    text-align: right; /* Right-align the text */
+    position: fixed; /* Ensures the element stays fixed in the viewport */
+    top: 10px; /* Position it near the top of the viewport */
+    left: 10px; /* Position it near the right side of the viewport */
+    text-align: left; /* Right-align the text */
     padding: 0 10px; /* Add padding to ensure text isn't touching the edge */
     z-index: 1000; /* Ensure it's on top of other elements */
 }
 
 /* Style for the h1 element inside the hd-text */
 .hd-text h1 {
-    font-size: 27px; /* Smaller font size similar to GitHub icon */
+    font-size: 27px; /* Font size similar to GitHub icon */
     line-height: 1.1;
-    margin: 0;
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
     color: transparent; /* Transparent text */
     -webkit-text-stroke: 1px #fff; /* White stroke for visible text outline */
     background: url('back.png'); /* Background image to fill the text */
     -webkit-background-clip: text; /* Clip the background to text */
     background-position: 0 0;
     animation: back 20s linear infinite; /* Animate background image */
+    font-weight: bold; /* Make text bold */
 }
 
 /* Keyframes for the background animation */
@@ -136,13 +120,17 @@ body, html {
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .hd-text h1 {
-        font-size: 18px; /* Smaller font size for medium screens */
+        font-size: 20px; /* Smaller font size for medium screens */
+        margin-top: 2px;
+        margin-left: -15px;
     }
 }
 
 @media (max-width: 480px) {
     .hd-text h1 {
-        font-size: 16px; /* Adjust font size for very small screens */
+        font-size: 18px; /* Adjust font size for very small screens */
+        margin-top: 2px;
+        margin-left: -15px;
     }
 }
 
@@ -395,7 +383,7 @@ nav:hover .nav-content span {
 
 /*about me page*/
 .box {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark gray background */
+    background-color: rgba(50, 50, 50, 0.5); /* Darker gray with semi-transparency */
     border-radius: 15px;
     text-align: center;
     color: #fff; /* White text color for contrast */
@@ -408,7 +396,8 @@ nav:hover .nav-content span {
     margin: 0 auto; /* Center the box horizontally */
     opacity: 0; /* Start hidden */
     transform: translateX(100%); /* Start off-screen */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;    animation: slideInRight 0.7s ease forwards;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    animation: slideInRight 0.7s ease forwards;
 }
 
 @keyframes slideInRight {
@@ -497,49 +486,67 @@ nav:hover .nav-content span {
     word-wrap: break-word;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    /* Maintain table layout, reduce padding */
+/* Responsive adjustments for tables */
+@media (max-width: 1024px) {
     .cert-table th, .cert-table td, 
     .invisible-table .table-cell {
-        padding: 5px;
+        padding: 4px; /* Reduced padding */
+        font-size: 0.8rem; /* Smaller font size */
+    }
+
+    .cert-table, 
+    .invisible-table {
         font-size: 0.8rem;
+        width: 100%;
     }
 
-    /* Adjust the overall font size */
-    .cert-table {
-        font-size: 0.85rem;
-    }
-
-    /* Adjust the cell width for better fit */
-    .cert-table th, .cert-table td, 
-    .invisible-table .table-cell {
-        width: auto;
-    }
-
-    /* Reduce space between rows */
+    /* Reduce the margin and space between rows */
     .cert-table tbody tr, 
     .invisible-table .table-row {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
     }
     
-    /* Set a minimum height for better visibility */
+    /* Ensure cells have a minimum height */
     .cert-table td, 
     .invisible-table .table-cell {
-        min-height: 30px;
+        min-height: 28px;
     }
 
-    /* Maximize content width */
+    /* Flex settings to help table columns distribute evenly */
+    .cert-table th, 
+    .cert-table td, 
+    .invisible-table .table-cell {
+        flex: 1 1 auto;
+    }
+}
+
+/* Further responsive tweaks for smaller screens */
+@media (max-width: 768px) {
+    .cert-table th, .cert-table td, 
+    .invisible-table .table-cell {
+        padding: 3px; /* Further reduced padding */
+        font-size: 0.75rem; /* Smaller font size */
+    }
+
+    .cert-table {
+        font-size: 0.75rem; /* Further reduced table font size */
+    }
+
     .cert-table, 
     .invisible-table {
         width: 100%;
     }
 
-    /* Ensure columns distribute evenly */
-    .cert-table th, 
+    /* Ensure a compact layout for rows */
+    .cert-table tbody tr, 
+    .invisible-table .table-row {
+        margin-bottom: 2px;
+    }
+
+    /* Adjust the minimum height for even smaller visibility */
     .cert-table td, 
     .invisible-table .table-cell {
-        flex: 1 1 auto;
+        min-height: 25px;
     }
 }
 
@@ -553,14 +560,6 @@ nav:hover .nav-content span {
     gap: 15px; /* Adds space between profile picture and text */
     margin-bottom: 20px;
     margin-top: 5px;
-}
-
-/* Adjust the profile picture alignment */
-.profile-pic {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover; /* Ensures the image is centered within the circle */
 }
 
 /* Center the heading text */
@@ -611,11 +610,6 @@ nav:hover .nav-content span {
         font-size: 1.5rem;
     }
     
-    .profile-pic {
-        width: 80px;
-        height: 80px;
-    }
-    
     .link-icon {
         width: 20px;
         height: 20px;
@@ -641,7 +635,7 @@ nav:hover .nav-content span {
     position: relative;
     max-width: 500px;
     width: 95%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark gray background */
+    background-color: rgba(50, 50, 50, 0.5); /* Darker gray with semi-transparency */
     padding: 10px 20px;
     border-radius: 7px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
@@ -651,8 +645,6 @@ nav:hover .nav-content span {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     animation: slideInLeft 0.7s ease forwards;
 }
-
-
 
 /* Skill box styles */
 .skill-box {
@@ -745,9 +737,25 @@ nav:hover .nav-content span {
     transform: translateX(-50%) rotate(45deg);
 }
 
+.github-icon {
+    position: static; /* Remove fixed positioning */
+    margin-top: 10px; /* Space between WhatsApp link and GitHub icon */
+    padding: 0 5px;
+}
+
+.github-icon a {
+    color: #ffffff; /* White icon */
+    font-size: 32px; /* Icon size */
+    text-decoration: none;
+}
+
+.github-icon a:hover {
+    color: #f5f5f5; /* Hover effect */
+}
+
 .footer-box {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark gray background */
-    padding: 40px 20px;
+    background-color: rgba(50, 50, 50, 0.5); /* Darker gray with semi-transparency */
+    padding: 20px 20px;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     margin-top: 50px;
@@ -768,6 +776,7 @@ nav:hover .nav-content span {
 /* Adjust margins for larger screens */
 .col-md-4:first-child {
     margin-right: auto; /* Pushes the first column to the left */
+    margin-left: 200px;
 }
 
 .col-md-4:last-child {
@@ -794,6 +803,7 @@ nav:hover .nav-content span {
     font-size: 1rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
     line-height: 1.6;
+    margin-bottom: 30px; /* Add space below text to accommodate the GitHub icon */
 }
 
 .footer-link {
@@ -869,6 +879,11 @@ nav:hover .nav-content span {
         align-items: center; /* Center items horizontally */
     }
 
+    .col-md-4:first-child {
+        margin-right: 0; /* Remove margin-right for tablets */
+        margin-left: 0; /* Remove margin-left for tablets */
+    }
+
     .col-md-4 {
         margin: 10px 0; /* Add margin between stacked columns */
         flex: 1 1 100%; /* Ensure columns take full width */
@@ -885,11 +900,15 @@ nav:hover .nav-content span {
         padding: 20px 10px;
     }
 
+    .col-md-4:first-child {
+        margin-right: 0; /* Remove margin-right for tablets */
+        margin-left: 0; /* Remove margin-left for tablets */
+    }
+
     .col-md-4 {
         flex: 1 1 100%; /* Columns stack on top of each other */
     }
 }
-
 
 /*page transition*/
 @keyframes fadeIn {
@@ -938,7 +957,10 @@ h4::after {
     opacity: 0.8;
 }
 
+/* Project Container */
 .project {
+    background-color: rgba(50, 50, 50, 0.5);
+    padding: 30px;
     position: relative;
     margin-bottom: 60px; 
     text-align: center;
@@ -948,6 +970,40 @@ h4::after {
     width: 80%;
     left: 10%;
     text-decoration: none;
+    cursor: pointer; /* Change cursor for desktop */
+    border: 2px solid transparent; /* Add subtle border that changes on hover */
+}
+
+/* Always Visible Link Icon or Button */
+.project::after {
+    content: 'Tap to Explore'; /* Instruction text or replace with icon (like 🔗) */
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+    color: #bce3cb;
+    padding: 8px 12px;
+    background: linear-gradient(90deg, #6e9d92, #2d5d81);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    opacity: 1; /* Always visible on touch devices */
+    pointer-events: none; /* Doesn't interfere with touch interactions */
+}
+
+/* Mobile View Styling for the Icon */
+@media (max-width: 768px) {
+    .project {
+        padding: 20px;
+        margin-bottom: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
+    }
+
+    .project::after {
+        font-size: 0.7rem; /* Adjust text/icon size for mobile */
+        bottom: 10px;
+        right: 10px;
+    }
 }
 
 .project:hover {
@@ -968,23 +1024,28 @@ h4::after {
     line-height: 1.6;
 }
 
+/* Enhanced Text and Border */
 .project h5 {
-    font-size: 2rem; /* Larger size for the link text */
-    font-weight: 700; /* Bold weight for emphasis */
-    letter-spacing: 1px; /* Adds spacing between letters */
-    line-height: 1.3; /* Controls the space between lines of text */
-    color: #bce3cb; /* Initial color of the link text */
-    background: linear-gradient(90deg, #a8e6cf, #74c0fc); /* Mint green to light sky blue gradient */
+    font-size: 2rem;
+    color: #bce3cb;
+    background: linear-gradient(90deg, #a8e6cf, #74c0fc);
+    color: transparent;
     -webkit-background-clip: text;
-    color: transparent; /* Makes the text color transparent to show the gradient */
-    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease; /* Smooth transitions for hover effects */
-    text-align: justify; /* Centers the text */
+    text-align: justify;
+    text-shadow: none;
+    transition: transform 0.3s ease, text-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
 }
 
 .project h5:hover {
-    transform: translateY(-5px); /* Slightly raises the link text on hover */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Adds a shadow effect on hover */
-    color: #6e9d92; /* Changes the text color on hover */
+    border-color: #bce3cb; /* Visible border change to show interactivity */
+}
+
+/* Tapping Indication for Touch Devices */
+.project:active {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-color: #74c0fc; /* Border highlight on tap */
 }
 
 .project a {
@@ -992,15 +1053,32 @@ h4::after {
 }
 
 @media (max-width: 768px) {
-    h4, .project h5, .project p {
-        font-size: 1.5rem;
-    }
-    h4::after {
-        width: 25%;
-    }
     .project {
-        width: 95%;
-        left: 2.5%;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    .wrapper {
+        width: 95vw;
+        height: auto; /* Adjusted height for responsiveness */
+        max-height: 300px;
+        overflow: hidden; /* Hide overflow to keep images within bounds */
+    }
+
+    .wrapper .img img {
+        width: 100%; /* Make the image fit the container width */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover; /* Ensure the image covers the container without distortion */
+        border: 5px solid rgba(255, 255, 255, 0.1); /* Adjust border width */
+        border-radius: 10px;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 1.2rem;
     }
 }
 
@@ -1044,22 +1122,22 @@ h4::after {
 /* Image Container */
 .wrapper .img {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100%;  /* Ensure image container takes full width */
+    height: 100%;  /* Keep height flexible and proportional */
     transition: opacity 0.7s ease, transform 0.5s ease;
-    opacity: 0; /* Hide all images initially */
-    transform: scale(1.05); /* Slightly zoom in */
-    border: 15px solid rgba(255, 255, 255, 0.2); /* Semi-transparent dark gray background */    ; /* Add a border to the image container */
-    border-radius: 15px; /* Optional: Add rounded corners */
+    opacity: 0;  /* Hide all images initially */
+    transform: scale(1.05);  /* Slight zoom-in effect */
+    border: 15px solid rgba(255, 255, 255, 0.2); /* Semi-transparent dark gray background */
+    border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for a 3D effect */
-    overflow: hidden; /* Ensure the image fits within the border box */
+    overflow: hidden;
 }
 
 /* Image Styling */
 .wrapper .img img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+    width: 100%;  /* Ensure the image fills the container width */
+    height: 100%; /* Ensure the image fills container height */
+    object-fit: cover; /* Ensure image covers the container without distortion */
     transition: transform 0.5s ease;
 }
 
@@ -1079,7 +1157,7 @@ h4::after {
 .project4 input[type="radio"]#two4:checked ~ .img.img-2,
 .project4 input[type="radio"]#three4:checked ~ .img.img-3 {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1);  /* Ensure no zoom effect when selected */
 }
 
 /* Sliders */
@@ -1107,6 +1185,7 @@ h4::after {
     transform: scale(1.2); /* Slightly enlarge on hover */
 }
 
+/* Change the selected slider style */
 .project1 input[type="radio"]#one1:checked ~ .sliders label[for="one1"],
 .project1 input[type="radio"]#two1:checked ~ .sliders label[for="two1"],
 .project1 input[type="radio"]#three1:checked ~ .sliders label[for="three1"],
@@ -1126,12 +1205,34 @@ h4::after {
     background: rgb(142, 197, 252);
 }
 
-.sliders label:hover {
-    background: rgb(142, 197, 252);
-}
-
 /* Hide radio buttons */
 input[type="radio"] {
     display: none;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95vw; /* Increase width to fit smaller screens */
+        height: auto; /* Allow height to adjust dynamically */
+        max-height: 300px; /* Optional max height for smaller screens */
+    }
+
+    .wrapper .img {
+        border: 10px solid rgba(255, 255, 255, 0.1); /* Adjust the border for smaller screens */
+    }
+
+    .wrapper .img img {
+        width: 100%;  /* Ensure image scales to fit container */
+        height: auto;  /* Maintain image aspect ratio */
+    }
+
+    /* Adjust text sizes */
+    h5 {
+        font-size: 1.6rem; /* Smaller text size for headings */
+    }
+
+    p {
+        font-size: 1.2rem; /* Smaller text size for paragraphs */
+    }
+}
