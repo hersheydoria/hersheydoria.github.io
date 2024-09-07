@@ -18,13 +18,19 @@ body {
     margin: 0; /* Ensure no extra space is causing scrolling */
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1020px){
     body {
-        background-position: top 200px center;
+        background-position: top -120px center;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 540px) {
+    body {
+        background-position: top -80px center;
+    }
+}
+
+@media (max-width: 450px) {
     body {
         background-position: top 50px center;
     }
