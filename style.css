@@ -494,6 +494,11 @@ nav:hover .nav-content span {
         font-size: 0.8rem; /* Smaller font size */
     }
 
+    .box, .container-box {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
+    }    
+
     .cert-table, 
     .invisible-table {
         font-size: 0.8rem;
@@ -527,6 +532,11 @@ nav:hover .nav-content span {
         padding: 3px; /* Further reduced padding */
         font-size: 0.75rem; /* Smaller font size */
     }
+
+    .box, .container-box {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
+    }    
 
     .cert-table {
         font-size: 0.75rem; /* Further reduced table font size */
@@ -870,6 +880,11 @@ nav:hover .nav-content span {
     .col-md-4:last-child {
         margin-left: 20px; /* Adjust right margin for tablets */
     }
+
+    .footer-box {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
+    }    
 }
 
 /* Adjust margin and layout for smaller screens */
@@ -877,11 +892,6 @@ nav:hover .nav-content span {
     .footer-header-wrapper {
         flex-direction: column; /* Stack columns on smaller screens */
         align-items: center; /* Center items horizontally */
-    }
-
-    .col-md-4:first-child {
-        margin-right: 0; /* Remove margin-right for tablets */
-        margin-left: 0; /* Remove margin-left for tablets */
     }
 
     .col-md-4 {
@@ -892,12 +902,18 @@ nav:hover .nav-content span {
     .col-md-4:last-child {
         margin-left: 0; /* Remove left margin on smaller screens */
     }
+    .footer-box {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
+    }    
 }
 
 /* Optional: Adjust padding for very small screens */
 @media (max-width: 576px) {
     .footer-box {
         padding: 20px 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
     }
 
     .col-md-4:first-child {
@@ -965,10 +981,7 @@ h4::after {
     margin-bottom: 60px; 
     text-align: center;
     border-radius: 10px;
-    overflow: visible; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 80%;
-    left: 10%;
     text-decoration: none;
     cursor: pointer; /* Change cursor for desktop */
     border: 2px solid transparent; /* Add subtle border that changes on hover */
@@ -988,22 +1001,6 @@ h4::after {
     right: 20px;
     opacity: 1; /* Always visible on touch devices */
     pointer-events: none; /* Doesn't interfere with touch interactions */
-}
-
-/* Mobile View Styling for the Icon */
-@media (max-width: 768px) {
-    .project {
-        padding: 20px;
-        margin-bottom: 40px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
-        border: 2px solid #bce3cb; /* Subtle border on touch devices */
-    }
-
-    .project::after {
-        font-size: 0.7rem; /* Adjust text/icon size for mobile */
-        bottom: 10px;
-        right: 10px;
-    }
 }
 
 .project:hover {
@@ -1052,33 +1049,44 @@ h4::after {
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
+/* For iPads in both portrait and landscape mode */
+@media(max-width: 820px) {
+    .wrapper .img {
+        width: 100%; /* Adjust image size to make it smaller on iPads */
+        max-width: 630px; /* Ensure maximum width doesn't exceed 500px */
+    }
+
+    .wrapper .sliders {
+        margin-left: -50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .wrapper .img {
+        width: 100%; /* Adjust image size to make it smaller on iPads */
+        max-width: 650px; /* Ensure maximum width doesn't exceed 500px */
+        box-sizing: border-box;
+        border: 15px solid rgba(255, 255, 255, 0.2); /* Semi-transparent dark gray background */
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for a 3D effect */
+    }
+
+    .wrapper .sliders {
+        margin-left: -30px;
+    }
+
     .project {
         padding: 20px;
+        padding-bottom: 70px;
         margin-bottom: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth to make it look clickable */
+        border: 2px solid #bce3cb; /* Subtle border on touch devices */
     }
 
-    .wrapper {
-        width: 95vw;
-        height: auto; /* Adjusted height for responsiveness */
-        max-height: 300px;
-        overflow: hidden; /* Hide overflow to keep images within bounds */
-    }
-
-    .wrapper .img img {
-        width: 100%; /* Make the image fit the container width */
-        height: auto; /* Maintain aspect ratio */
-        object-fit: cover; /* Ensure the image covers the container without distortion */
-        border: 5px solid rgba(255, 255, 255, 0.1); /* Adjust border width */
-        border-radius: 10px;
-    }
-
-    h5 {
-        font-size: 1.6rem;
-    }
-
-    p {
-        font-size: 1.2rem;
+    .project::after {
+        font-size: 0.7rem; /* Adjust text/icon size for mobile */
+        bottom: 10px;
+        right: 10px;
     }
 }
 
@@ -1216,15 +1224,6 @@ input[type="radio"] {
         width: 95vw; /* Increase width to fit smaller screens */
         height: auto; /* Allow height to adjust dynamically */
         max-height: 300px; /* Optional max height for smaller screens */
-    }
-
-    .wrapper .img {
-        border: 10px solid rgba(255, 255, 255, 0.1); /* Adjust the border for smaller screens */
-    }
-
-    .wrapper .img img {
-        width: 100%;  /* Ensure image scales to fit container */
-        height: auto;  /* Maintain image aspect ratio */
     }
 
     /* Adjust text sizes */
