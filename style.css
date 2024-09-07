@@ -6,9 +6,6 @@
 }
 
 body {
-    position: fixed; /* Ensure positioning context for the image container */
-    width: 100%; /* Ensure full width */
-    height: 100vh; /* Adjust to viewport height */
     background-color: #006a6a; /* Solid color close to darker mint green */
     padding: 0;
     margin: 0; /* Ensure no extra space is causing scrolling */

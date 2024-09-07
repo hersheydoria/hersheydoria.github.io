@@ -42,6 +42,8 @@ const nav = document.querySelector('nav');
 let startY = 0;
 let initialTop = 0;
 
+const options = { passive: false }; // Create an options object to specify non-passive
+
 function onDrag(event) {
     const navStyle = window.getComputedStyle(nav);
     const navTop = parseInt(navStyle.top) || 0;
@@ -55,9 +57,11 @@ function onMouseDown(event) {
     const navStyle = window.getComputedStyle(nav);
     initialTop = parseInt(navStyle.top) || 0;
 
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-    document.addEventListener("mouseleave", onMouseLeave);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+    document.addEventListener("mousemove", onMouseMove, options);
+    document.addEventListener("mouseup", onMouseUp, options);
+    document.addEventListener("mouseleave", onMouseLeave, options);
 }
 
 function onMouseMove(event) {
@@ -67,12 +71,16 @@ function onMouseMove(event) {
 }
 
 function onMouseUp(event) {
+    document.body.style.overflow = ''; // Re-enable scrolling
+
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
     document.removeEventListener("mouseleave", onMouseLeave);
 }
 
 function onMouseLeave(event) {
+    document.body.style.overflow = ''; // Re-enable scrolling
+
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
     document.removeEventListener("mouseleave", onMouseLeave);
@@ -84,8 +92,10 @@ function onTouchStart(event) {
     const navStyle = window.getComputedStyle(nav);
     initialTop = parseInt(navStyle.top) || 0;
 
-    document.addEventListener("touchmove", onTouchMove);
-    document.addEventListener("touchend", onTouchEnd);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+    document.addEventListener("touchmove", onTouchMove, options);
+    document.addEventListener("touchend", onTouchEnd, options);
 }
 
 function onTouchMove(event) {
@@ -96,13 +106,15 @@ function onTouchMove(event) {
 }
 
 function onTouchEnd(event) {
+    document.body.style.overflow = ''; // Re-enable scrolling
+
     document.removeEventListener("touchmove", onTouchMove);
     document.removeEventListener("touchend", onTouchEnd);
 }
 
 // Add event listeners for mouse and touch events
-nav.addEventListener("mousedown", onMouseDown);
-nav.addEventListener("touchstart", onTouchStart);
+nav.addEventListener("mousedown", onMouseDown, options);
+nav.addEventListener("touchstart", onTouchStart, options);
 
 document.addEventListener("DOMContentLoaded", function () {
     // Create an intersection observer
