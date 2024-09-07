@@ -18,6 +18,18 @@ body {
     margin: 0; /* Ensure no extra space is causing scrolling */
 }
 
+@media (max-width: 860px) {
+    body {
+        background-position: top 200px center;
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        background-position: top 50px center;
+    }
+}
+
 body, html {
     margin: 0;
     padding: 0;
