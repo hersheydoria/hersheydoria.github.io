@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 /*preloader*/
 window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
+    document.getElementById('preloader').style.display = 'none';
 });
 
 /*nav dragging*/
