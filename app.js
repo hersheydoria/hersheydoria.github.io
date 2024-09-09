@@ -6,35 +6,38 @@ window.addEventListener('DOMContentLoaded', () => {
     const introImage = document.querySelector('.intro-image'); // Ensure this is within DOMContentLoaded
     
     if (introImage) {
+        // Wait briefly before starting the animation
         setTimeout(() => {
-            // Animate image
+            // Set intro image opacity to 1 to make it visible
             introImage.style.opacity = 1;
 
+            // Animate logo spans
             logoSpan.forEach((span, idx) => {
                 setTimeout(() => {
                     span.classList.add('active');
-                }, (idx + 1) * 400);
+                }, (idx + 1) * 400);  // Delay each span
             });
 
+            // After 2 seconds, fade out logo spans and the intro image
             setTimeout(() => {
                 logoSpan.forEach((span, idx) => {
                     setTimeout(() => {
                         span.classList.remove('active');
-                        span.classList.add('fade');
-                    }, (idx + 1) * 50);
+                        span.classList.add('fade'); // Add fade effect
+                    }, (idx + 1) * 50);  // Quick fade delay
                 });
 
-                // Fade out image
+                // Fade out intro image
                 introImage.style.opacity = 0;
             }, 2000);
 
+            // Move the intro section out of view after 2.3 seconds
             setTimeout(() => {
-                intro.style.top = '-100vh';
+                intro.style.top = '-100vh';  // Slide up the intro
             }, 2300);
-        }, 100); // Add a slight delay before starting the animation
-    } else {
-        console.error('.intro-image not found');
-    }
+
+        }, 100);  // Initial slight delay before animation starts
+    } 
 });
 
 /*preloader*/
@@ -214,9 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Your browser does not support the Web Share API. Please share this link manually.');
             }
         });
-    } else {
-        console.error('Share button not found in the DOM.');
-    }
+    } 
 });
 
 /*image swiping*/
@@ -258,3 +259,128 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+const letters = document.querySelectorAll('.floating-letter');
+letters.forEach(letter => {
+  const randomTop = Math.random();
+  const randomLeft = Math.random();
+  const randomMoveX = (Math.random() - 0.5) * 2; // Random movement on X axis
+  const randomMoveY = (Math.random() - 0.5) * 2; // Random movement on Y axis
+  const randomDuration = 10 + Math.random() * 20; // Random duration between 10-30 seconds
+
+  letter.style.setProperty('--start-top', randomTop);
+  letter.style.setProperty('--start-left', randomLeft);
+  letter.style.setProperty('--move-x', randomMoveX); // Random horizontal movement
+  letter.style.setProperty('--move-y', randomMoveY); // Random vertical movement
+  letter.style.animationDuration = `${randomDuration}s`; // Random animation speed
+});
+
+if (document.getElementById('particles-js')) {
+particlesJS('particles-js',
+  {
+    "particles": {
+      "number": {
+        "value": 80, // Number of particles
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#ffffff" // Color of particles
+      },
+      "shape": {
+        "type": "circle", // Circle particles
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 5,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 40,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "repulse" // Particles move away when hovered
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push" // New particles are added on click
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 400,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 40,
+          "duration": 2,
+          "opacity": 8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true
+  }
+);
+}
