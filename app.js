@@ -1,36 +1,42 @@
 let intro = document.querySelector('.intro');
 let logo = document.querySelector('.logo-header');
 let logoSpan = document.querySelectorAll('.logo');
-let introImage = document.querySelector('.intro-image'); // Add this line
 
 window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        // Animate image
-        introImage.style.opacity = 1;
-
-        logoSpan.forEach((span, idx) => {
-            setTimeout(() => {
-                span.classList.add('active');
-            }, (idx + 1) * 400);
-        });
-
+    const introImage = document.querySelector('.intro-image'); // Ensure this is within DOMContentLoaded
+    
+    if (introImage) {
         setTimeout(() => {
+            // Animate image
+            introImage.style.opacity = 1;
+
             logoSpan.forEach((span, idx) => {
                 setTimeout(() => {
-                    span.classList.remove('active');
-                    span.classList.add('fade');
-                }, (idx + 1) * 50);
+                    span.classList.add('active');
+                }, (idx + 1) * 400);
             });
 
-            // Fade out image
-            introImage.style.opacity = 0;
-        }, 2000);
+            setTimeout(() => {
+                logoSpan.forEach((span, idx) => {
+                    setTimeout(() => {
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50);
+                });
 
-        setTimeout(() => {
-            intro.style.top = '-100vh';
-        }, 2300);
-    }, 100); // Add a slight delay before starting the animation
+                // Fade out image
+                introImage.style.opacity = 0;
+            }, 2000);
+
+            setTimeout(() => {
+                intro.style.top = '-100vh';
+            }, 2300);
+        }, 100); // Add a slight delay before starting the animation
+    } else {
+        console.error('.intro-image not found');
+    }
 });
+
 /*preloader*/
 window.addEventListener('load', function() {
     document.getElementById('preloader').style.display = 'none';
@@ -116,6 +122,7 @@ function onTouchEnd(event) {
 nav.addEventListener("mousedown", onMouseDown, options);
 nav.addEventListener("touchstart", onTouchStart, options);
 
+/*skill animation*/
 document.addEventListener("DOMContentLoaded", function () {
     // Create an intersection observer
     const observer = new IntersectionObserver((entries) => {
@@ -189,22 +196,29 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.box, .container-box, .footer-box').forEach(el => observer.observe(el));
 });
 
-
 /*share button*/
-document.querySelector('.share-btn').addEventListener('click', () => {
-    if (navigator.share) {
-        navigator.share({
-            title: 'Check out this website!',
-            text: 'Visit this awesome website I found!',
-            url: window.location.href,
-        }).then(() => {
-            console.log('Thanks for sharing!');
-        })
-        .catch(console.error);
+document.addEventListener('DOMContentLoaded', () => {
+    const shareButton = document.querySelector('.share-btn');
+    if (shareButton) {
+        shareButton.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Check out this website!',
+                    text: 'Visit this awesome website I found!',
+                    url: window.location.href,
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                .catch(console.error);
+            } else {
+                alert('Your browser does not support the Web Share API. Please share this link manually.');
+            }
+        });
     } else {
-        alert('Your browser does not support the Web Share API. Please share this link manually.');
+        console.error('Share button not found in the DOM.');
     }
 });
+
 /*image swiping*/
 document.addEventListener("DOMContentLoaded", function() {
     const wrappers = document.querySelectorAll('.wrapper');
