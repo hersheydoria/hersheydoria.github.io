@@ -62,6 +62,7 @@ body {
     display: flex; /* Use flexbox to center the image */
     align-items: center; /* Vertically center the image */
     justify-content: center; /* Horizontally center the image */
+    z-index: -1;
 }
 
 .image-container img {
@@ -369,7 +370,7 @@ body, html {
 /* Splash screen */
 .intro {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
     width: 100%;
@@ -419,7 +420,22 @@ body, html {
     transition: ease-in-out 0.5s;
 }
 
-/*navigation*/
+/* Navigation styling */
+/* For the first item */
+.nav-item-1 {
+    --i: 1;
+}
+
+/* For the second item */
+.nav-item-3 {
+    --i: 3;
+}
+
+/* For the third item */
+.nav-item-5 {
+    --i: 5;
+}
+
 nav {
     position: fixed;
     top: 50%;
@@ -430,6 +446,12 @@ nav {
     align-items: center;
     justify-content: center;
     cursor: grab;
+    z-index: 1;
+}
+
+.btn {
+    width: 24px; /* Decreased size */
+    height: 24px; /* Decreased size */
 }
 
 .nav-content {
@@ -442,27 +464,50 @@ nav {
 
 .nav-content .toggle-btn,
 .nav-content span a {
-    height: 60px;
-    width: 60px;
+    height: 50px; /* Decreased size */
+    width: 50px; /* Decreased size */
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Center images inside the <i> tag */
+.nav-content i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;  /* Ensures the icon fills the available space */
+    height: 100%;
 }
 
 .nav-content .toggle-btn {
-    font-size: 35px;
+    font-size: 30px; /* Reduced font size */
     color: #0e2431;
     z-index: 100;
     cursor: pointer;
     transform: rotate(-315deg);
 }
 
-/* Open state on hover */
+/* Adjust icon font size */
+.nav-content span a i {
+    font-size: 20px; /* Reduced size of the icons */
+    color: #0e2431;
+    transform: rotate(calc(var(--i) * (360deg/-8)));
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.nav-content span a:hover i {
+    opacity: 1.5;
+}
+
+/* Hover effect for opening the nav content */
 nav:hover .nav-content span {
-    transform: rotate(calc(var(--i) * (360deg/8))) translateY(120px);
+    transform: rotate(calc(var(--i) * (360deg/8))) translateY(100px); /* Adjusted translation */
     opacity: 1;
 }
 
@@ -478,16 +523,20 @@ nav:hover .nav-content span {
     transform: rotate(45deg);
 }
 
-.nav-content span a i {
-    font-size: 24px;
-    color: #0e2431;
-    transform: rotate(calc(var(--i) * (360deg/-8)));
-    opacity: 0.8;
-    transition: 0.2s;
+/* New styles for spacing and image size */
+.nav-content span {
+    display: inline-block;
+    margin: 10px; /* Adjust spacing between icons */
 }
 
-.nav-content span a:hover i {
-    opacity: 1.5;
+.nav-content i img { 
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    object-fit: contain; /* Makes sure the image fits properly */
+}
+
+.bx { /* For Font Awesome icons */
+    font-size: 30px; /* Adjust size as needed */
 }
 
 /*about me page*/
@@ -571,6 +620,7 @@ nav:hover .nav-content span {
 
 .cert-table tbody tr:nth-child(even) {
     background-color: #f2f2f2; /* Alternating row colors */
+    color: black;
 }
 
 .cert-table tbody tr:hover {
