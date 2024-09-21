@@ -902,9 +902,15 @@ nav:hover .nav-content span {
 /* Container for the skill items */
 .skills-container {
     display: grid; /* Use grid layout */
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
     gap: 10px; /* Space between items */
     margin-bottom: 20px; /* Space below the grid */
+}
+
+@media(max-width: 820px) {
+    .skills-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Common styling for skill items */
