@@ -864,6 +864,11 @@ nav:hover .nav-content span {
     width: 60%;
 }
 
+/* Mobile App Development width */
+.skill-per.mobile.animate {
+    width: 80%;
+}
+
 /* Tooltip styles */
 .tooltip {
     position: absolute;
@@ -1360,7 +1365,14 @@ nav:hover .nav-content span {
 .project3 input[type="radio"]#three3:checked ~ .img.img-3,
 .project4 input[type="radio"]#one4:checked ~ .img.img-1,
 .project4 input[type="radio"]#two4:checked ~ .img.img-2,
-.project4 input[type="radio"]#three4:checked ~ .img.img-3 {
+.project4 input[type="radio"]#three4:checked ~ .img.img-3,
+.project6 input[type="radio"]#one6:checked ~ .img.img-1,
+.project6 input[type="radio"]#two6:checked ~ .img.img-2,
+.project6 input[type="radio"]#three6:checked ~ .img.img-3,
+.project6 input[type="radio"]#four6:checked ~ .img.img-4,
+.project6 input[type="radio"]#five6:checked ~ .img.img-5,
+.project6 input[type="radio"]#six6:checked ~ .img.img-6,
+.project6 input[type="radio"]#seven6:checked ~ .img.img-7 {
     opacity: 1;
     transform: scale(1);  /* Ensure no zoom effect when selected */
 }
@@ -1404,7 +1416,14 @@ nav:hover .nav-content span {
 .project3 input[type="radio"]#three3:checked ~ .sliders label[for="three3"],
 .project4 input[type="radio"]#one4:checked ~ .sliders label[for="one4"],
 .project4 input[type="radio"]#two4:checked ~ .sliders label[for="two4"],
-.project4 input[type="radio"]#three4:checked ~ .sliders label[for="three4"] {
+.project4 input[type="radio"]#three4:checked ~ .sliders label[for="three4"],
+.project6 input[type="radio"]#one6:checked ~ .sliders label[for="one6"],
+.project6 input[type="radio"]#two6:checked ~ .sliders label[for="two6"],
+.project6 input[type="radio"]#three6:checked ~ .sliders label[for="three6"],
+.project6 input[type="radio"]#four6:checked ~ .sliders label[for="four6"],
+.project6 input[type="radio"]#five6:checked ~ .sliders label[for="five6"],
+.project6 input[type="radio"]#six6:checked ~ .sliders label[for="six6"],
+.project6 input[type="radio"]#seven6:checked ~ .sliders label[for="seven6"] {
     width: 25px;
     border-radius: 14px;
     background: rgb(142, 197, 252);
@@ -1413,6 +1432,26 @@ nav:hover .nav-content span {
 /* Hide radio buttons */
 input[type="radio"] {
     display: none;
+}
+
+/* Video Container Styles */
+.video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-container iframe {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
 }
 
 /* Responsive Styles */
@@ -1430,5 +1469,10 @@ input[type="radio"] {
 
     p {
         font-size: 1.2rem; /* Smaller text size for paragraphs */
+    }
+
+    .video-container iframe {
+        max-width: 100%;
+        height: auto;
     }
 }

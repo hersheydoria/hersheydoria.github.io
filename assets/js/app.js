@@ -171,7 +171,10 @@ document.addEventListener('animationend', function (event) {
     if (event.animationName === 'fadeOut') {
         // Only navigate if the current page is not the index page
         if (window.location.pathname !== '/index.html') {
-            window.location.href = event.target.getAttribute('data-href');
+            const href = event.target.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            }
         }
     }
 });
