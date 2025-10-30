@@ -1462,6 +1462,15 @@ input[type="radio"] {
         max-height: 300px; /* Optional max height for smaller screens */
     }
 
+    /* Hide carousel images and videos on smaller screens */
+    .wrapper .img {
+        display: none;
+    }
+
+    .video-container {
+        display: none;
+    }
+
     /* Adjust text sizes */
     h5 {
         font-size: 1.6rem; /* Smaller text size for headings */
